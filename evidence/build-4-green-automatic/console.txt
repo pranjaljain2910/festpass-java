@@ -1,0 +1,171 @@
+Started by an SCM change
+Obtained Jenkinsfile from git git://127.0.0.1:9418/festpass-java
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on -laptop in /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 5 min 0 sec
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Fetching changes from the remote Git repository
+Checking out Revision 6bfe104b9b0089b563aa10431b2d192978b84519 (refs/remotes/origin/main)
+Commit message: "Fix cancel: release the student's seat when a booking is cancelled"
+ > git rev-parse --resolve-git-dir /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/.git # timeout=10
+ > git config remote.origin.url git://127.0.0.1:9418/festpass-java # timeout=10
+Fetching upstream changes from git://127.0.0.1:9418/festpass-java
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5 (Apple Git-154)'
+ > git fetch --tags --force --progress -- git://127.0.0.1:9418/festpass-java +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6bfe104b9b0089b563aa10431b2d192978b84519 # timeout=10
+ > git rev-list --no-walk 1bb4cd3b04f98700e1463a0be37d8c9b52486710 # timeout=10
+[Pipeline] dir
+Running in /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/build
+[Pipeline] {
+[Pipeline] deleteDir
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ git log -1 --oneline
+6bfe104 Fix cancel: release the student's seat when a booking is cancelled
++ java -version
+openjdk version "21.0.13" 2026-10-20 LTS
+OpenJDK Runtime Environment Temurin-21.0.13+9 (build 21.0.13+9-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.13+9 (build 21.0.13+9-LTS, mixed mode, sharing)
++ javac -version
+javac 21.0.13
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Submission setup)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ java ci/BuildEvidence.java prepare
+Submission settings ready. Evidence will use a class-scoped hash of the computer name and a local random installation ID.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ java ci/Build.java test
+Compiled FestPass with Java 21.
+PASS emptyEventAcceptsBooking
+PASS lastAvailableSeatIsAccepted
+PASS fullEventRejectsBooking
+PASS overCapacityRejectsBooking
+PASS zeroCapacityRejectsBooking
+PASS oneSeatEventAcceptsBooking
+PASS negativeBookedIsRejected
+PASS negativeCapacityIsRejected
+PASS eventsTrackIndependentCapacity
+PASS duplicateEventDoesNotReplaceBookings
+PASS invalidEventsLeaveStateUnchanged
+PASS duplicateBookingDoesNotConsumeSeat
+PASS soldOutBookingLeavesRosterUnchanged
+PASS cancellationFreesSeat
+PASS missingBookingCannotBeCancelled
+PASS unknownEventsAreRejected
+PASS invalidStudentIdsAreRejected
+PASS snapshotsCannotMutateService
+PASS bookingsSurviveSaveAndReload
+PASS cancellationsSurviveReload
+PASS corruptDataIsRejected
+PASS missingDataStartsEmpty
+PASS cliWorkflowPersistsAcrossCommands
+PASS cliReportsInvalidRequests
+PASS cliDoesNotOverwriteCorruptFile
+PASS cliReportsReadAndSaveFailures
+PASS cliRejectsLockedStore
+PASS helpDoesNotNeedProjectData
+28 tests, 0 failures. Report: build/test-results/TEST-FestPass.xml
+[Pipeline] }
+[Pipeline] // script
+Post stage
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build JAR)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ java ci/Build.java package
+Compiled FestPass with Java 21.
+BUILD SUCCESS: build/festpass.jar
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Smoke test JAR)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ java ci/SmokeTest.java
+PASS JAR: add-event (exit 0)
+PASS JAR: book (exit 0)
+PASS JAR: book (exit 2)
+PASS JAR: roster (exit 0)
+PASS JAR: cancel (exit 0)
+PASS JAR: book (exit 0)
+PASS JAR: summary (exit 0)
+PASS: seven real-JAR commands; persistence, sold-out rejection, cancellation, and seat reuse verified.
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Save artifact)
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] sh
++ java ci/BuildEvidence.java SUCCESS
+Recorded submission-evidence.csv for Parth Puri, build 4, result SUCCESS.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

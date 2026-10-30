@@ -1,0 +1,13 @@
+FestPass - campus event registration, maintained by Parth Puri
+Usage: java -jar build/festpass.jar [--data FILE] COMMAND
+  add-event ID "TITLE" CAPACITY
+  list
+  book EVENT_ID STUDENT_ID
+  cancel EVENT_ID STUDENT_ID
+  roster EVENT_ID
+  summary
+  help
+Default data file: data/festpass.tsv
+IDs are case-sensitive. Use synthetic student IDs, not personal data.
+Exit codes: 0 success, 2 invalid request, 3 storage failure.
+
