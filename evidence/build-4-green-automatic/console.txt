@@ -2,7 +2,7 @@ Started by an SCM change
 Obtained Jenkinsfile from git git://127.0.0.1:9418/festpass-java
 [Pipeline] Start of Pipeline
 [Pipeline] node
-Running on -laptop in /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci
+Running on -laptop in /Users/pranjaljain/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci
 [Pipeline] {
 [Pipeline] timeout
 Timeout set to expire in 5 min 0 sec
@@ -16,7 +16,7 @@ No credentials specified
 Fetching changes from the remote Git repository
 Checking out Revision 6bfe104b9b0089b563aa10431b2d192978b84519 (refs/remotes/origin/main)
 Commit message: "Fix cancel: release the student's seat when a booking is cancelled"
- > git rev-parse --resolve-git-dir /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/.git # timeout=10
+ > git rev-parse --resolve-git-dir /Users/pranjaljain/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/.git # timeout=10
  > git config remote.origin.url git://127.0.0.1:9418/festpass-java # timeout=10
 Fetching upstream changes from git://127.0.0.1:9418/festpass-java
  > git --version # timeout=10
@@ -27,7 +27,7 @@ Fetching upstream changes from git://127.0.0.1:9418/festpass-java
  > git checkout -f 6bfe104b9b0089b563aa10431b2d192978b84519 # timeout=10
  > git rev-list --no-walk 1bb4cd3b04f98700e1463a0be37d8c9b52486710 # timeout=10
 [Pipeline] dir
-Running in /Users/parthpuri/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/build
+Running in /Users/pranjaljain/CloudJenkinsLab/jenkins-lab/runtime/agent-work/workspace/festpass-ci/build
 [Pipeline] {
 [Pipeline] deleteDir
 [Pipeline] }
@@ -153,7 +153,7 @@ Recording fingerprints
 [Pipeline] isUnix
 [Pipeline] sh
 + java ci/BuildEvidence.java SUCCESS
-Recorded submission-evidence.csv for Parth Puri, build 4, result SUCCESS.
+Recorded submission-evidence.csv for Pranjal Jain, build 4, result SUCCESS.
 [Pipeline] }
 [Pipeline] // withEnv
 [Pipeline] }
