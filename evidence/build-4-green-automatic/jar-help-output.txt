@@ -1,4 +1,4 @@
-FestPass - campus event registration, maintained by Parth Puri
+FestPass - campus event registration, maintained by Pranjal Jain
 Usage: java -jar build/festpass.jar [--data FILE] COMMAND
   add-event ID "TITLE" CAPACITY
   list
