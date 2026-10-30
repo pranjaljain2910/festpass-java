@@ -1,6 +1,6 @@
 # FestPass Jenkins challenge: evidence page
 
-**Student (Git author alias):** Parth Puri
+**Student (Git author alias):** Pranjal Jain
 **Class code:** 001 · **Challenge code:** 00262
 **Jenkins job:** `festpass-ci` (Pipeline script from SCM)
 
@@ -70,7 +70,7 @@ No tests, build helpers, evidence code, or pipeline stages were changed. The onl
 Output of `java -jar festpass.jar help` in the download folder:
 
 ```
-FestPass - campus event registration, maintained by Parth Puri
+FestPass - campus event registration, maintained by Pranjal Jain
 Usage: java -jar build/festpass.jar [--data FILE] COMMAND
   add-event ID "TITLE" CAPACITY
   list
