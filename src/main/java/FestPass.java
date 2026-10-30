@@ -130,7 +130,7 @@ public final class FestPass {
 
     private static void usage(PrintStream out) {
         out.println("""
-                FestPass - campus event registration, maintained by Parth Puri
+                FestPass - campus event registration, maintained by Pranjal Jain
                 Usage: java -jar build/festpass.jar [--data FILE] COMMAND
                   add-event ID "TITLE" CAPACITY
                   list
